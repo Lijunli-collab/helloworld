@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小青龙大战菜虚鲲</title>
+    <style>
+        .bask {
+            width: 30px;
+            height: 30px;
+            background: url(bask.png) no-repeat center / cover;
+            left: 700px;
+            top: 150px;
+            position: absolute;
+            border-radius: 50%;
+            animation-name: bask;
+            animation-duration: 6s;
+            animation-iteration-count: 1;
+            display: block;
+        }
+
+        .boss {
+            width: 80px;
+            height: 80px;
+            background: url(boss.gif) no-repeat center / cover;
+            left: 700px;
+            top: 150px;
+            position: absolute;
+            border-radius: 25%;
+            transform: rotateY(180deg);
+        }
+
+        .open button {
+            width: 40px;
+            height: 40px;
+            background: url(open.png) no-repeat center / cover;
+            position: absolute;
+            border-radius: 25%;
+            left: 850px;
+            top: 200px;
+            display: none;
+        }
+
+        .stop button {
+            width: 40px;
+            height: 40px;
+            background: url(stop.png) no-repeat center / cover;
+            position: absolute;
+            border-radius: 25%;
+            left: 850px;
+            top: 200px;
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            background: url(botton.png) no-repeat center / cover;
+            position: absolute;
+            border-radius: 25%;
+            left: 550px;
+            top: 200px;
+        }
+
+        .boring {
+            width: 40px;
+            height: 40px;
+            background: url(boring.jpg) no-repeat center / cover;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .victory {
+            width: 40px;
+            height: 40px;
+            background: url(victory.jpg) no-repeat center / cover;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .died {
+            font-style: italic;
+            font-family: "宋体";
+            color: black;
+            width: 40px;
+            height: 40px;
+            background: url(died.jpg) no-repeat center / cover;
+            position: absolute;
+            border-radius: 50%;
+
+        }
+
+        .fraction {
+            font-style: italic;
+            font-family: "宋体";
+            color: black;
+            width: 300px;
+            height: 30px;
+            line-height: 20px;
+            border: 1px dashed rgb(20, 19, 19);
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            margin: 50px auto;
+            background: rgba(33, 11, 233, 0.774);
+        }
+
+        .blood-bar {
+            font-style: italic;
+            font-family: "宋体";
+            color: black;
+            width: 300px;
+            height: 30px;
+            line-height: 20px;
+            border: 1px dashed red;
+            position: absolute;
+            left: 20px;
+            top: -30px;
+            margin: 50px auto;
+            background: rgba(206, 9, 124, 0.774);
+        }
+
+        .gametime {
+            font-style: italic;
+            font-family: "宋体";
+            color: black;
+            width: 300px;
+            height: 30px;
+            line-height: 20px;
+            border: 1px dashed rgb(24, 23, 23);
+            position: absolute;
+            left: 500px;
+            top: -30px;
+            margin: 50px auto;
+            background: rgba(12, 216, 56, 0.774);
+        }
+
+        .grass {
+            width: 30px;
+            height: 30px;
+            background: url(green.gif) no-repeat center / cover;
+            position: absolute;
+            left: 1000px;
+            top: 500px;
+            animation-name: grass;
+            animation-duration: 6s;
+            animation-iteration-count: 10000;
+            display: block;
+        }
+
+        .grass1 {
+            width: 60px;
+            height: 60px;
+            background: url(grass1.gif) no-repeat center / cover;
+            position: absolute;
+            display: block;
+        }
+
+        .sun {
+            width: 100px;
+            height: 100px;
+            background: url(sun.png) no-repeat center / cover;
+            position: absolute;
+            left: 800px;
+            top: 100px;
+            animation-name: sun;
+            animation-duration: 10s;
+            animation-iteration-count: 10000;
+            display: block;
+            border-radius: 50%;
+        }
+
+        .cloud {
+            width: 100px;
+            height: 100px;
+            background: url(cloud.png) no-repeat center / cover;
+            position: absolute;
+            left: 0px;
+            top: 60px;
+            animation-name: cloud;
+            animation-duration: 20s;
+            animation-iteration-count: 10000;
+            display: block;
+        }
+
+        .cloud1 {
+            width: 100px;
+            height: 100px;
+            background: url(cloud.png) no-repeat center / cover;
+            position: absolute;
+            left: 0px;
+            top: 150px;
+            animation-name: cloud;
+            animation-duration: 10s;
+            animation-iteration-count: 1;
+            display: block;
+        }
+
+        .blood {
+            width: 50px;
+            height: 50px;
+            background: url(blood.gif) no-repeat center / cover;
+            position: absolute;
+            left: 800px;
+            top: 100px;
+            border-radius: 25%;
+        }
+
+        .wolf {
+            width: 100px;
+            height: 100px;
+            background: url(wolf.png) no-repeat center / cover;
+            position: absolute;
+            left: 800px;
+            top: 480px;
+        }
+
+        .grassland {
+            width: 1200px;
+            height: 600px;
+            background: url(grassland.jpg) no-repeat center / cover;
+        }
+
+        .dragon {
+            width: 100px;
+            height: 100px;
+            background: url(green_dragon.gif) no-repeat center / cover;
+            position: absolute;
+            left: 50px;
+            top: 300px;
+        }
+
+        .fire {
+            width: 20px;
+            height: 20px;
+            background: url(fire_boll.png) no-repeat center / cover;
+            position: relative;
+            animation-name: fireboll;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            display: block;
+            border-radius: 50%;
+        }
+
+        @keyframes grass {
+            from {
+                transform: translate(1200deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: translate(-1200px) rotateZ(3600deg);
+            }
+        }
+
+        @keyframes sun {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(1080deg);
+            }
+        }
+
+        @keyframes bask {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(3600deg);
+            }
+        }
+
+        @keyframes cloud {
+            from {
+                transform: translate(0);
+            }
+
+            to {
+                transform: translate(1000px);
+            }
+        }
+
+        @keyframes fireboll {
+            from {
+                transform: rotateX(0deg);
+            }
+
+            to {
+                transform: rotateX(180deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <boss id="boss" class=""></boss>
+    <bask id="bask" class=""></bask>
+    <victory id="victory" class=""></victory>
+    <boring id="boring" class=""></boring>
+    <died id="died" class=""></died>
+    <blood-bar id="br" class="blood-bar">
+        血量：<span class="one">50</span>
+    </blood-bar>
+    <gametime id="gametime" class="gametime">游玩时间：<span class="one">0m:0s</span></gametime>
+    <fraction id="fraction" class="fraction">分数：<span class="one">0</span></fraction>
+    <div id="grass" class="grass"></div>
+    <grass1 id="grass1" class=""></grass1>
+    <div id="grassland" class="grassland"></div>
+    <div id="sun" class="sun"></div>
+    <div id="cloud" class="cloud"></div>
+    <cloud1 id="cloud1" class=""></cloud1>
+    <wolf id="wolf" class=""></wolf>
+    <fire id="fire" class=""></fire>
+    <blood id="blood" class=""></blood>
+    <div id="dragon" class="dragon"></div>
+    <button id="button" onclick="getbutton()"></button>
+    <script>
+        const boss = document.querySelector('boss')
+        const bask = document.querySelector('bask')
+        const victory = document.querySelector('victory')
+        const boring = document.querySelector('boring')
+        const died = document.querySelector('died')
+        const fire = document.querySelector('fire')
+        const grass1 = document.querySelector('grass1')
+        const cloud1 = document.querySelector('cloud1')
+        const wolf = document.querySelector('wolf')
+        const blood = document.querySelector('blood')
+        const br = document.querySelector('blood-bar span')
+        const gt = document.querySelector('gametime span')
+        const fraction = document.querySelector('fraction span')
+        var divdragon = document.getElementById("dragon");
+        var divbutton = document.getElementById("button");
+        var num1 = 50;
+        var num2 = 300;
+        var num3 = 0;
+        var num4 = 0
+        var num5 = 0
+        var num6 = 0
+        var num7 = 0
+        var num8 = 0
+        var num9 = 700
+        var num10 = 150
+        var p = 0
+        var v = 0
+        var h = 0
+        var i = 0
+        var m = 0
+        var n = 0
+        var c = 0
+        var d = 0
+        var j = 0
+        var b = 0
+        var hp = 50
+        var fra = 0
+        var bu = 0
+        var bosshp = 5
+        var g = 0
+        var f = 0
+        var t1 = 0
+        var t2 = 0
+        var t3 = 0
+        function getbutton() {
+            divbutton.style.display = 'none'
+            bu = 1
+        }
+        window.onload = function () {
+            var interbutton = setInterval(function () {
+                if (bu == 1) {
+                    clearInterval(interbutton)
+                    setInterval(function () {
+                        t1++
+                        if (t1 > 60) {
+                            t2++
+                            t1 = 0
+                        }
+                        gt.innerHTML = t2 + 'm' + ':' + t1 + 's'
+                    }, 1000)
+                    var interboss = setInterval(function () {
+                        if (g == 0) {
+                            boss.classList.add('boss')
+                            g = 1
+                            bosshp = 5
+                        }
+                        if (g == 1) {
+                            var interbask1 = setInterval(function () {
+                                num9 = 700
+                                num10 = 150
+                                bask.classList.add('bask')
+                                var divbask = document.getElementById('bask')
+                                var interbask = setInterval(function () {
+                                    var randomNumber = Math.floor(Math.random() * 10 + 1)
+                                    num9 -= 2
+                                    divbask.style.left = num9 + 'px';
+                                    if (randomNumber >= 1 && randomNumber <= 3) {
+                                        num10 += randomNumber * 0.4
+                                        divbask.style.top = num10 + 'px';
+                                    }
+                                    if (num1 >= num9 - 90 && num1 <= num9 + 10 && num2 >= num10 - 60 && num2 <= num10 + 5) {
+                                        hp -= 10
+                                        br.innerHTML = hp
+                                        bask.classList.remove('bask')
+                                        num9 = 0
+                                        num10 = 0
+                                    }
+                                }, 10)
+                                if (f > 0) {
+                                    f = 0
+                                    clearInterval(interbask)
+                                }
+                                f++
+                                setTimeout(function () {
+                                    bask.classList.remove('bask')
+                                    num9 = 0
+                                    num10 = 0
+                                }, 4000)/* 6 */
+                            }, 6000)/* 10 */
+                        }
+                    }, 60000)/* 60 */
+
+                    document.onkeydown = function (e) {
+                        var ev = event || e
+                        var kc = ev.keyCode
+                        var res = String.fromCharCode(kc)
+                        if (res == 'D') {
+                            var interD = setInterval(function () {
+                                num1 += 1
+                                divdragon.style.left = num1 + 'px';
+                            }, 10)
+                            setTimeout(function () {
+                                clearInterval(interD)
+                            }, 100)
+                        }
+                        if (res == 'A') {
+                            var interA = setInterval(function () {
+                                num1 -= 1
+                                divdragon.style.left = num1 + 'px';
+                            }, 10)
+                            setTimeout(function () {
+                                clearInterval(interA)
+                            }, 100)
+                        }
+                        if (res == 'W') {
+                            var interW = setInterval(function () {
+                                num2 -= 1
+                                divdragon.style.top = num2 + 'px';
+                            }, 10)
+                            setTimeout(function () {
+                                clearInterval(interW)
+                            }, 100)
+                        }
+                        if (res == 'S') {
+                            var interS = setInterval(function () {
+                                num2 += 1
+                                if (num2 >= 480)
+                                    num2 = 480
+                                divdragon.style.top = num2 + 'px';
+                            }, 10)
+                            setTimeout(function () {
+                                clearInterval(interS)
+                            }, 100)
+                        }
+                        if (res == 'J' && p == 0) {
+                            p = 1
+                            fire.classList.add('fire')
+                            var divfire = document.getElementById("fire");
+                            num3 = num1 + 95
+                            num4 = num2 - 570
+                            divfire.style.top = num4 + 'px'
+                            var interfire = setInterval(function () {
+                                divfire.style.left = num3 + 'px'
+                                num3 += 2.5
+                                num7 = num4 + 400
+                                if (g == 1 && num3 <= 700 + 55 && num3 >= 700 + 10 && 150 >= num7 + 130 && 150 <= num7 + 210) {
+                                    clearInterval(interfire)
+                                    blood.classList.add('blood')
+                                    var divblood = document.getElementById("blood");
+                                    divblood.style.left = 710 + 'px'
+                                    divblood.style.top = 160 + 'px'
+                                    setTimeout(function () {
+                                        blood.classList.remove('blood')
+                                    }, 100)
+                                    bosshp -= 1
+                                    fire.classList.remove('fire')
+                                    num3 = 0
+                                    num4 = 0
+                                }
+                                if (bosshp == 0) {
+                                    bosshp = 5
+                                    fra += 60
+                                    fraction.innerHTML = fra
+                                    g = 0
+                                    var intervictory1 = setInterval(function () {
+                                        victory.classList.add('victory')
+                                        var divvictory = document.getElementById("victory")
+                                        divvictory.style.left = num1 + 90 + 'px'
+                                        divvictory.style.top = num2 + 'px'
+                                    }, 100)
+                                    setTimeout(function () {
+                                        victory.classList.remove('victory')
+                                        clearInterval(intervictory1)
+                                    }, 3000)
+                                }
+                                if (v == 1 && num3 <= num5 + 35 && num3 >= num5 + 30 && num6 >= num7 + 130 && num6 <= num7 + 180) {
+                                    blood.classList.add('blood')
+                                    fra += 5
+                                    c++
+                                    v = 0
+                                    h = 0
+                                    p = 0
+                                    if (c == 8) {
+                                        var intervictory = setInterval(function () {
+                                            victory.classList.add('victory')
+                                            var divvictory = document.getElementById("victory")
+                                            divvictory.style.left = num1 + 90 + 'px'
+                                            divvictory.style.top = num2 + 'px'
+                                        }, 100)
+                                        setTimeout(function () {
+                                            victory.classList.remove('victory')
+                                            c = 0
+                                            clearInterval(intervictory)
+                                        }, 3000)
+                                    }
+                                    fraction.innerHTML = fra
+                                    var divblood = document.getElementById("blood");
+                                    divblood.style.left = num5 + 10 + 'px'
+                                    divblood.style.top = num6 + 10 + 'px'
+                                    setTimeout(function () {
+                                        blood.classList.remove('blood')
+                                    }, 100)
+                                    num5 = 0
+                                    num6 = 0
+                                    fire.classList.remove('fire')
+                                    clearInterval(interfire)
+                                    wolf.classList.remove('wolf')
+                                }
+                            }, 5)
+                            if (p == 1)
+                                setTimeout(function () {/* fire */
+                                    p = 0
+                                    fire.classList.remove('fire')
+                                    clearInterval(interfire)
+                                }, 998)
+                        }
+                    }
+                    setInterval(function () {
+                        if (hp <= 0) {
+                            died.classList.add('died')
+                            var divdied = document.getElementById("died")
+                            divdied.style.left = num1 + 90 + 'px'
+                            divdied.style.top = num2 + 'px'
+                        }
+                    }, 100)
+                    setInterval(function () {
+                        num8 = 1000
+                        var randomNumber = Math.floor(Math.random() * 18 + 30)
+                        grass1.classList.add('grass1')
+                        var divgrass1 = document.getElementById("grass1")
+                        b = randomNumber * 10
+                        divgrass1.style.top = b + 'px'
+                        var intergrass1 = setInterval(function () {
+                            num8 -= 2
+                            divgrass1.style.left = num8 + 'px'
+                            if (num1 >= num8 - 10 && num1 <= num8 + 10 && num2 >= b - 60 && num2 <= b + 20) {
+                                hp -= 3
+                                br.innerHTML = hp
+                                grass1.classList.remove('grass1')
+                                num8 = 0
+                                b = 0
+                            }
+                        }, 5)
+                        if (j > 0) {
+                            clearInterval(intergrass1)
+                            j = 0
+                        }
+                        j++
+                    }, 3000)
+                    setInterval(function () {
+                        if (n == 0)
+                            d = fra
+                        n++
+                        if (n == 5 && fra == d) {
+                            var interboring = setInterval(function () {
+                                boring.classList.add('boring')
+                                var divboring = document.getElementById("boring")
+                                divboring.style.left = num1 + 90 + 'px'
+                                divboring.style.top = num2 + 'px'
+                            }, 100)
+                            setTimeout(function () {
+                                boring.classList.remove('boring')
+                                n = 0
+                                clearInterval(interboring)
+                            }, 3000)
+                        }
+                        var randomNumber = Math.floor(Math.random() * 10 + 1)
+                        setTimeout(cloud1.classList.toggle('cloud1'), randomNumber * 300)
+                        num5 = 800
+                        num6 = 480
+                        v = 1
+                        wolf.classList.add('wolf')
+                        var divwolf = document.getElementById("wolf");
+                        var interwolf = setInterval(function () {
+                            num5 -= 1
+                            divwolf.style.left = num5 + 'px'
+                            if (h == 1) {
+                                num6 -= 1
+                                divwolf.style.top = num6 + 'px'
+                            }
+                            if (h == 2) {
+                                num6 += 0.75
+                                if (num6 > 480)
+                                    num6 = 480
+                                divwolf.style.top = num6 + 'px'
+                            }
+                            if (v == 1 && num1 >= num5 - 10 && num1 <= num5 + 10 && num2 >= num6 - 40 && num2 <= num6) {
+                                hp -= 5
+                                br.innerHTML = hp
+                                wolf.classList.remove('wolf')
+                                num6 = 0
+                                num5 = 0
+                            }
+                        }, 5)
+                        if (i > 0) {
+                            clearInterval(interwolf)
+                            i = 0
+                        }
+                        i++
+                        setTimeout(function () {
+                            h = 1
+                        }, randomNumber * 200)
+                        setTimeout(function () {
+                            h = 2
+                        }, randomNumber * 200 + 600)
+                    }, 6000)
+                }
+            }, 100)
+        }
+
+    </script>
+</body>
+
+</html>
